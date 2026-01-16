@@ -431,206 +431,215 @@
         }
 
         /* ===== ITEM DETAIL MODAL ===== */
-        
-        /* ===== HORIZONTAL CARD STYLES ===== */
-.menu-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 10px;
-    max-width: 600px;
-    margin: 0 auto;
-}
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            backdrop-filter: blur(5px);
+        }
 
-.horizontal-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    display: flex;
-    height: 110px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(212, 175, 55, 0.1);
-}
+        .modal.active {
+            display: flex;
+        }
 
-.horizontal-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.4s ease;
+        }
 
-/* Card Image - Left Side */
-.card-image-container {
-    flex: 0 0 110px;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-}
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
-.card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
+        .modal-header {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 15px 15px 0 0;
+        }
 
-.horizontal-card:hover .card-image {
-    transform: scale(1.05);
-}
+        .modal-image-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
 
-/* Card Content - Right Side */
-.card-content {
-    flex: 1;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-}
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
 
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 5px;
-}
+        .modal-image-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            transform: translateY(-50%);
+        }
 
-.card-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    line-height: 1.2;
-    margin-right: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .image-nav-btn {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
 
-.card-price {
-    font-size: 1rem;
-    color: #D4AF37;
-    font-weight: 600;
-    white-space: nowrap;
-}
+        .image-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
 
-.card-category {
-    font-size: 0.75rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-}
+        .image-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
 
-.card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: auto;
-}
+        .image-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
 
-.dietary-tags {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
-}
+        .image-indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
 
-.dietary-tag {
-    font-size: 0.65rem;
-    padding: 3px 8px;
-    border-radius: 10px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-}
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
 
-.dietary-tag.veg { 
-    background: #e8f6ef; 
-    color: #27ae60; 
-    border: 1px solid #a3e4c4;
-}
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: rotate(90deg);
+        }
 
-.dietary-tag.non-veg { 
-    background: #fdedec; 
-    color: #e74c3c; 
-    border: 1px solid #f5b7b1;
-}
+        .modal-body {
+            padding: 1.5rem;
+        }
 
-.dietary-tag.gluten-free { 
-    background: #fef9e7; 
-    color: #f39c12; 
-    border: 1px solid #f8c471;
-}
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            margin-bottom: 0.5rem;
+            color: var(--dark-bg);
+        }
 
-/* View Details Button */
-.view-card-btn {
-    padding: 6px 12px;
-    background: transparent;
-    color: #D4AF37;
-    border: 1px solid #D4AF37;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-shrink: 0;
-}
+        .modal-price {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
 
-.view-card-btn:hover {
-    background: #D4AF37;
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(212, 175, 55, 0.3);
-}
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
 
-.view-card-btn i {
-    font-size: 0.7rem;
-}
+        .modal-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 0.5rem;
+            color: var(--dark-bg);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
 
-/* Sticky Category Navigation (as you requested) */
-.category-nav {
-    position: sticky;
-    top: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    z-index: 100;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
+        .modal-section p {
+            line-height: 1.6;
+            color: #555;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
 
-/* For larger screens */
-@media (min-width: 768px) {
-    .horizontal-card {
-        height: 120px;
-    }
-    
-    .card-image-container {
-        flex: 0 0 130px;
-    }
-}
+        .ingredients-list {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0.5rem;
+        }
 
-/* For very small screens */
-@media (max-width: 350px) {
-    .horizontal-card {
-        height: 100px;
-    }
-    
-    .card-image-container {
-        flex: 0 0 90px;
-    }
-    
-    .card-name {
-        font-size: 0.9rem;
-    }
-    
-    .card-price {
-        font-size: 0.9rem;
-    }
-}
+        .ingredients-list li {
+            background: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: clamp(0.8rem, 1.5vw, 0.85rem);
+        }
+
+        .prep-time {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 0.8rem;
+            color: #666;
+            font-size: clamp(0.85rem, 2vw, 0.9rem);
+        }
+
+        .prep-time i {
+            color: var(--primary-gold);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 1.5rem;
+            flex-direction: column;
+        }
+
+        @media (min-width: 480px) {
+            .modal-actions {
+                flex-direction: row;
+            }
+        }
 
         /* ===== LIKE THIS BUTTON ===== */
         .like-btn {
@@ -1200,105 +1209,6 @@
                 <button class="category-btn" data-category="drinks">Drinks</button>
             </nav>
 
-            <!-- Horizontal Cards Container -->
-<div class="menu-grid" id="menu-grid">
-    <!-- Card 1 -->
-    <div class="horizontal-card" data-category="starters">
-        <div class="card-image-container">
-            <img src="https://images.unsplash.com/photo-1626700051175-6818013e0571?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                 alt="Truffle Arancini" 
-                 class="card-image">
-        </div>
-        <div class="card-content">
-            <div class="card-header">
-                <h3 class="card-name">Truffle Arancini</h3>
-                <span class="card-price">$16.99</span>
-            </div>
-            <div class="card-category">Starter</div>
-            <div class="card-footer">
-                <div class="dietary-tags">
-                    <span class="dietary-tag veg">VEG</span>
-                </div>
-                <button class="view-card-btn" data-id="1">
-                    <i class="fas fa-eye"></i> View
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="horizontal-card" data-category="mains">
-        <div class="card-image-container">
-            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                 alt="Lobster Thermidor" 
-                 class="card-image">
-        </div>
-        <div class="card-content">
-            <div class="card-header">
-                <h3 class="card-name">Lobster Thermidor</h3>
-                <span class="card-price">$42.99</span>
-            </div>
-            <div class="card-category">Main Course</div>
-            <div class="card-footer">
-                <div class="dietary-tags">
-                    <span class="dietary-tag non-veg">NON-VEG</span>
-                </div>
-                <button class="view-card-btn" data-id="2">
-                    <i class="fas fa-eye"></i> View
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="horizontal-card" data-category="mains">
-        <div class="card-image-container">
-            <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                 alt="Wild Mushroom Risotto" 
-                 class="card-image">
-        </div>
-        <div class="card-content">
-            <div class="card-header">
-                <h3 class="card-name">Wild Mushroom Risotto</h3>
-                <span class="card-price">$26.99</span>
-            </div>
-            <div class="card-category">Main Course</div>
-            <div class="card-footer">
-                <div class="dietary-tags">
-                    <span class="dietary-tag veg">VEG</span>
-                    <span class="dietary-tag gluten-free">GF</span>
-                </div>
-                <button class="view-card-btn" data-id="3">
-                    <i class="fas fa-eye"></i> View
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="horizontal-card" data-category="desserts">
-        <div class="card-image-container">
-            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                 alt="Chocolate Soufflé" 
-                 class="card-image">
-        </div>
-        <div class="card-content">
-            <div class="card-header">
-                <h3 class="card-name">Chocolate Soufflé</h3>
-                <span class="card-price">$14.99</span>
-            </div>
-            <div class="card-category">Dessert</div>
-            <div class="card-footer">
-                <div class="dietary-tags">
-                    <span class="dietary-tag veg">VEG</span>
-                </div>
-                <button class="view-card-btn" data-id="4">
-                    <i class="fas fa-eye"></i> View
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
             <!-- Menu Items Grid -->
             <section class="menu-grid" id="menu-grid">
                 <!-- Menu items will be dynamically inserted here -->
@@ -2186,7 +2096,4 @@
         init();
     </script>
 </body>
-
 </html>
-
-
