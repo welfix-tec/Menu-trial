@@ -1250,13 +1250,15 @@
 
         <main class="container">
             <!-- Sticky Category Navigation -->
-            <nav class="category-nav">
-                <button class="category-btn active" data-category="all">All</button>
-                <button class="category-btn" data-category="starters">Starters</button>
-                <button class="category-btn" data-category="mains">Main Course</button>
-                <button class="category-btn" data-category="desserts">Desserts</button>
-                <button class="category-btn" data-category="drinks">Drinks</button>
-            </nav>
+          <nav class="category-nav">
+    <div class="category-container">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="starters">Starters</button>
+        <button class="category-btn" data-category="mains">Mains</button>
+        <button class="category-btn" data-category="desserts">Desserts</button>
+        <button class="category-btn" data-category="drinks">Drinks</button>
+    </div>
+</nav>
 
             <!-- Menu Items Grid -->
             <section class="menu-grid" id="menu-grid">
@@ -1630,47 +1632,58 @@
         }
 
         // ===== MENU DISPLAY FUNCTIONS =====
-        function displayMenuItems(category = 'all') {
-            menuGrid.innerHTML = '';
-            
-            const filteredMenu = category === 'all' 
-                ? menuData 
-                : menuData.filter(item => item.category === category);
-            
-            // Group items by category for better organization
-            if (category === 'all') {
-                const categories = ['starters', 'mains', 'desserts', 'drinks'];
-                
-                categories.forEach(cat => {
-                    const categoryItems = menuData.filter(item => item.category === cat);
-                    
-                    if (categoryItems.length > 0) {
-                        // Add category header
-                        const categoryHeader = document.createElement('h3');
-                        categoryHeader.className = 'category-header';
-                        categoryHeader.textContent = getCategoryDisplayName(cat);
-                        menuGrid.appendChild(categoryHeader);
-                        
-                        // Add items for this category
-                        categoryItems.forEach(item => {
-                            menuGrid.appendChild(createMenuItemElement(item));
-                        });
-                    }
-                });
-            } else {
-                // Display filtered items
-                filteredMenu.forEach(item => {
-                    menuGrid.appendChild(createMenuItemElement(item));
-                });
-            }
+       function displayMenuItems(category = 'all') {
+    menuGrid.innerHTML = '';
+    
+    const filteredMenu = category === 'all' 
+        ? menuData 
+        : menuData.filter(item => item.category === category);
+    
+    filteredMenu.forEach(item => {
+        const cardElement = document.createElement('div');
+        cardElement.className = 'horizontal-card';
+        cardElement.setAttribute('data-category', item.category);
+        cardElement.innerHTML = `
+            <div class="card-image-container">
+                <img src="${item.images[0]}" alt="${item.name}" class="card-image" loading="lazy">
+            </div>
+            <div class="card-content">
+                <div class="card-header">
+                    <h3 class="card-name">${item.name}</h3>
+                    <span class="card-price">$${item.price.toFixed(2)}</span>
+                </div>
+                <div class="card-category">${getCategoryDisplayName(item.category)}</div>
+                <div class="card-footer">
+                    <div class="dietary-tags">
+                        ${item.dietary.map(diet => `<span class="dietary-tag ${diet}">${diet.toUpperCase()}</span>`).join('')}
+                    </div>
+                    <button class="view-card-btn" data-id="${item.id}">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                </div>
+            </div>
+        `;
+        menuGrid.appendChild(cardElement);
+    });
+    
+    // Add event listeners to the "View" buttons
+    document.querySelectorAll('.view-card-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            openItemModal(parseInt(e.target.closest('button').dataset.id));
+        });
+    });
+}
 
-            // Add event listeners to the "View Details" buttons
-            document.querySelectorAll('.view-details-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    openItemModal(parseInt(e.target.closest('button').dataset.id));
-                });
-            });
-        }
+// Add this helper function
+function getCategoryDisplayName(category) {
+    const categoryNames = {
+        'starters': 'STARTER',
+        'mains': 'MAIN COURSE',
+        'desserts': 'DESSERT',
+        'drinks': 'DRINK'
+    };
+    return categoryNames[category] || category.toUpperCase();
+}
 
         function getCategoryDisplayName(category) {
             const categoryNames = {
@@ -2146,3 +2159,4 @@
     </script>
 </body>
 </html>
+
