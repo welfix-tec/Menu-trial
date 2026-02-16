@@ -1383,6 +1383,631 @@ footer p {
         border: 1px solid #ddd;
     }
 }
+/* ===== LUXURY MOVING HOTEL DEALS TICKER ===== */
+.deals-ticker-section {
+    padding: 0 15px 25px 15px;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+
+.deals-ticker-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--primary-gold), 
+        rgba(212, 175, 55, 0.3), 
+        var(--primary-gold), 
+        transparent);
+    opacity: 0.3;
+}
+
+.deals-ticker-container {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(248, 245, 240, 0.98) 100%);
+    border-radius: 50px;
+    box-shadow: 
+        0 15px 35px rgba(212, 175, 55, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 0 0 1px rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.deals-ticker-container:hover {
+    box-shadow: 
+        0 20px 45px rgba(212, 175, 55, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 0 0 1px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Ticker Header - Elegant Gold Ribbon */
+.ticker-header-small {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    background: linear-gradient(135deg, 
+        var(--primary-gold) 0%,
+        #FFD700 50%,
+        var(--primary-gold) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    border-radius: 50px 0 0 50px;
+    box-shadow: 
+        3px 0 25px rgba(212, 175, 55, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+}
+
+.ticker-header-small::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        transparent 70%);
+    animation: headerShine 3s infinite linear;
+    transform: rotate(30deg);
+}
+
+@keyframes headerShine {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
+
+.ticker-label-small {
+    color: var(--dark-bg);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+.ticker-label-small i {
+    font-size: 1rem;
+    animation: goldPulse 2s infinite;
+}
+
+@keyframes goldPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+    }
+    50% { 
+        transform: scale(1.15); 
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+    }
+}
+
+/* Moving Content Wrapper */
+.ticker-content-wrapper {
+    flex: 1;
+    margin-left: 100px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-right: 120px;
+}
+
+.ticker-content-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.9), 
+        transparent);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.ticker-content-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 120px;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    background: linear-gradient(270deg, 
+        rgba(255, 255, 255, 0.9), 
+        transparent);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Moving Track - Continuous Animation */
+.ticker-moving-track {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    height: 100%;
+    animation: luxuryMove 35s linear infinite;
+    will-change: transform;
+    white-space: nowrap;
+    padding-right: 35px;
+}
+
+/* Luxury Moving Animation */
+@keyframes luxuryMove {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Individual Moving Items - Luxury Cards */
+.ticker-moving-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 22px 8px 18px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 40px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    flex-shrink: 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.ticker-moving-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        var(--primary-gold), 
+        #FFD700, 
+        var(--primary-gold));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.ticker-moving-item:hover {
+    background: rgb(86, 86, 3);
+    border-color: var(--primary-gold);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 15px 30px rgba(212, 175, 55, 0.25),
+        0 0 0 1px rgba(212, 175, 55, 0.3);
+}
+
+.ticker-moving-item:hover::before {
+    opacity: 1;
+}
+
+/* Deal Icon - Enhanced */
+.ticker-deal-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.ticker-deal-icon::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.6), 
+        transparent);
+    animation: iconShimmer 2s infinite;
+    transform: translateX(-100%);
+}
+
+@keyframes iconShimmer {
+    100% { transform: translateX(100%); }
+}
+
+.ticker-deal-icon.discount {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.3));
+    color: var(--primary-gold);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    text-shadow: 0 1px 3px rgba(212, 175, 55, 0.3);
+}
+
+.ticker-deal-icon.happy {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(52, 152, 219, 0.25));
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.4);
+}
+
+.ticker-deal-icon.lunch {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(46, 204, 113, 0.25));
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.4);
+}
+
+.ticker-deal-icon.family {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.15), rgba(155, 89, 182, 0.25));
+    color: #9b59b6;
+    border: 1px solid rgba(155, 89, 182, 0.4);
+}
+
+.ticker-deal-icon.brunch {
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.15), rgba(241, 196, 15, 0.25));
+    color: #f1c40f;
+    border: 1px solid rgba(241, 196, 15, 0.4);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.ticker-deal-icon.wine {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(231, 76, 60, 0.25));
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.4);
+}
+
+/* Deal Text - Using Your Fonts */
+.ticker-deal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--dark-bg);
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-right: 8px;
+}
+
+.ticker-deal-title::after {
+    content: '•';
+    position: absolute;
+    right: 0;
+    color: var(--primary-gold);
+    opacity: 0.5;
+    font-size: 1.2rem;
+}
+
+.ticker-deal-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #555;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.ticker-deal-code {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.1), 
+        rgba(212, 175, 55, 0.2));
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.ticker-moving-item:hover .ticker-deal-code {
+    background: var(--primary-gold);
+    color: rgb(69, 65, 65);
+    border-color: var(--primary-gold);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* Mini Controls - Enhanced */
+.ticker-mini-controls {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px;
+    border-radius: 30px;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.ticker-mini-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--dark-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.ticker-mini-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-gold), #FFD700);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.ticker-mini-btn:hover::before {
+    transform: scale(1);
+}
+
+.ticker-mini-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgb(0, 0, 0);
+}
+
+.ticker-mini-btn i {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.ticker-mini-btn:hover i {
+    color: rgb(182, 188, 0);
+}
+
+/* Active state for pause button */
+.ticker-mini-btn.paused i {
+    color: var(--primary-gold);
+}
+
+/* Pause on hover */
+.deals-ticker-container:hover .ticker-moving-track {
+    animation-play-state: paused;
+}
+
+/* Speed variations - Smooth transitions */
+.ticker-moving-track.slow {
+    animation-duration: 50s;
+}
+
+.ticker-moving-track.medium {
+    animation-duration: 35s;
+}
+
+.ticker-moving-track.fast {
+    animation-duration: 20s;
+}
+
+/* Decorative Elements */
+.deals-ticker-container::after {
+    content: '✨';
+    position: absolute;
+    right: 95px;
+    top: -8px;
+    font-size: 1rem;
+    color: var(--primary-gold);
+    animation: sparkle 2s infinite;
+    z-index: 25;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Responsive Design with Luxury Touch */
+@media (max-width: 1024px) {
+    .deals-ticker-container {
+        height: 65px;
+    }
+    
+    .ticker-header-small {
+        width: 90px;
+    }
+    
+    .ticker-label-small {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .deals-ticker-container {
+        height: 60px;
+    }
+    
+    .ticker-header-small {
+        width: 80px;
+    }
+    
+    .ticker-label-small {
+        font-size: 0.85rem;
+        gap: 5px;
+    }
+    
+    .ticker-content-wrapper {
+        margin-left: 80px;
+        padding-right: 100px;
+    }
+    
+    .ticker-moving-item {
+        padding: 6px 18px 6px 15px;
+        gap: 8px;
+    }
+    
+    .ticker-deal-desc {
+        display: none; /* Hide description on mobile for cleaner look */
+    }
+    
+    .ticker-deal-title {
+        font-size: 0.85rem;
+    }
+    
+    .ticker-deal-title::after {
+        display: none;
+    }
+    
+    .ticker-deal-code {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .deals-ticker-container {
+        height: 55px;
+        border-radius: 40px;
+    }
+    
+    .ticker-header-small {
+        width: 70px;
+    }
+    
+    .ticker-label-small {
+        font-size: 0.75rem;
+        gap: 4px;
+    }
+    
+    .ticker-label-small i {
+        font-size: 0.8rem;
+    }
+    
+    .ticker-content-wrapper {
+        margin-left: 70px;
+        padding-right: 85px;
+    }
+    
+    .ticker-moving-item {
+        padding: 5px 15px 5px 12px;
+        gap: 6px;
+    }
+    
+    .ticker-deal-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+    
+    .ticker-deal-title {
+        font-size: 0.8rem;
+    }
+    
+    .ticker-deal-code {
+        font-size: 0.65rem;
+        padding: 2px 8px;
+    }
+    
+    .ticker-mini-controls {
+        right: 10px;
+        padding: 4px;
+        gap: 6px;
+    }
+    
+    .ticker-mini-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Dark Mode Support - If needed */
+@media (prefers-color-scheme: dark) {
+    .deals-ticker-container {
+        background: linear-gradient(135deg, 
+            rgba(40, 40, 40, 0.98) 0%,
+            rgba(30, 30, 30, 0.98) 100%);
+    }
+    
+    .ticker-moving-item {
+        background: rgba(50, 50, 50, 0.85);
+    }
+    
+    .ticker-deal-title {
+        color: #f0f0f0;
+    }
+    
+    .ticker-deal-desc {
+        color: #aaa;
+    }
+}
+
+/* Animation for new items */
+@keyframes slideInGlow {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ticker-moving-item.new {
+    animation: slideInGlow 0.5s ease-out;
+    box-shadow: 0 0 0 2px var(--primary-gold);
+}
+
+
     </style>
 </head>
 <body>
@@ -1420,6 +2045,95 @@ footer p {
         <button class="category-btn" data-category="drinks">Drinks</button>
     </div>
 </nav>
+
+<!-- ===== MOVING HOTEL DEALS TICKER ===== -->
+<section class="deals-ticker-section">
+    <div class="deals-ticker-container">
+        <!-- Ticker Header -->
+        <div class="ticker-header-small">
+            <div class="ticker-label-small">
+                <i class="fas fa-tag"></i>
+                <span>DEALS</span>
+            </div>
+        </div>
+        
+        <!-- Moving Content -->
+        <div class="ticker-content-wrapper">
+            <div class="ticker-moving-track" id="dealsMovingTrack">
+                <!-- Deal 1 -->
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon discount">%</span>
+                    <span class="ticker-deal-title">WEEKEND SPECIAL:</span>
+                    <span class="ticker-deal-desc">20% off all main courses</span>
+                    <span class="ticker-deal-code">WEEKEND20</span>
+                </div>
+                
+                <!-- Deal 2 -->
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon happy">🍸</span>
+                    <span class="ticker-deal-title">HAPPY HOUR:</span>
+                    <span class="ticker-deal-desc">30% off cocktails 5-7PM</span>
+                    <span class="ticker-deal-code">HAPPY30</span>
+                </div>
+                
+                <!-- Deal 3 -->
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon lunch">💼</span>
+                    <span class="ticker-deal-title">BUSINESS LUNCH:</span>
+                    <span class="ticker-deal-desc">2-course meal with coffee</span>
+                    <span class="ticker-deal-code">LUNCH25</span>
+                </div>
+                
+                <!-- Deal 4 -->
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon family">👪</span>
+                    <span class="ticker-deal-title">FAMILY FEAST:</span>
+                    <span class="ticker-deal-desc">15% off orders $80+</span>
+                    <span class="ticker-deal-code">FAMILY15</span>
+                </div>
+                
+                <!-- Deal 5 -->
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon brunch">🥂</span>
+                    <span class="ticker-deal-title">SUNDAY BRUNCH:</span>
+                    <span class="ticker-deal-desc">Free-flow champagne</span>
+                    <span class="ticker-deal-code">BRUNCH10</span>
+                </div>
+                
+                <!-- Deal 6 -->
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon wine">🍷</span>
+                    <span class="ticker-deal-title">WINE WEDNESDAY:</span>
+                    <span class="ticker-deal-desc">20% off all wine bottles</span>
+                    <span class="ticker-deal-code">WINE20</span>
+                </div>
+                
+                <!-- DUPLICATE - for seamless loop -->
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon discount">%</span>
+                    <span class="ticker-deal-title">WEEKEND SPECIAL:</span>
+                    <span class="ticker-deal-desc">20% off all main courses</span>
+                    <span class="ticker-deal-code">WEEKEND20</span>
+                </div>
+                
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon happy">🍸</span>
+                    <span class="ticker-deal-title">HAPPY HOUR:</span>
+                    <span class="ticker-deal-desc">30% off cocktails 5-7PM</span>
+                    <span class="ticker-deal-code">HAPPY30</span>
+                </div>
+                
+                <div class="ticker-moving-item">
+                    <span class="ticker-deal-icon lunch">💼</span>
+                    <span class="ticker-deal-title">BUSINESS LUNCH:</span>
+                    <span class="ticker-deal-desc">2-course meal with coffee</span>
+                    <span class="ticker-deal-code">LUNCH25</span>
+                </div>
+            </div>
+        </div>
+        
+    
+</section>
 
             <!-- Menu Items Grid -->
             <section class="menu-grid" id="menu-grid">
@@ -1522,7 +2236,7 @@ footer p {
 
         <footer>
             <div class="container">
-                <p>Scan QR Code to View Menu | &copy; 2023 Epicurean Delights Restaurant</p>
+                <p>Scan QR Code to View Menu | &copy; 2026 Welfix @Menu Restaurant</p>
             </div>
         </footer>
     </div>
@@ -2320,5 +3034,6 @@ function getCategoryDisplayName(category) {
     </script>
 </body>
 </html>
+
 
 
