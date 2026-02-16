@@ -1383,13 +1383,14 @@ footer p {
         border: 1px solid #ddd;
     }
 }
-/* ===== LUXURY MOVING HOTEL DEALS TICKER ===== */
+/* ===== LUXURY MOVING HOTEL DEALS TICKER - FULLY RESPONSIVE ===== */
 .deals-ticker-section {
     padding: 0 15px 25px 15px;
     width: 100%;
     margin-bottom: 10px;
     font-family: 'Montserrat', sans-serif;
     position: relative;
+    box-sizing: border-box;
 }
 
 .deals-ticker-section::before {
@@ -1518,6 +1519,7 @@ footer p {
     overflow: hidden;
     position: relative;
     padding-right: 120px;
+    width: calc(100% - 220px); /* Ensure proper width calculation */
 }
 
 .ticker-content-wrapper::before {
@@ -1558,6 +1560,11 @@ footer p {
     will-change: transform;
     white-space: nowrap;
     padding-right: 35px;
+    width: max-content; /* Critical for mobile - prevents wrapping */
+    -webkit-transform: translateZ(0); /* Hardware acceleration */
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 /* Luxury Moving Animation */
@@ -1700,6 +1707,7 @@ footer p {
     letter-spacing: 0.5px;
     position: relative;
     padding-right: 8px;
+    white-space: nowrap;
 }
 
 .ticker-deal-title::after {
@@ -1717,6 +1725,7 @@ footer p {
     color: #555;
     font-weight: 500;
     letter-spacing: 0.2px;
+    white-space: nowrap;
 }
 
 .ticker-deal-code {
@@ -1735,6 +1744,7 @@ footer p {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .ticker-moving-item:hover .ticker-deal-code {
@@ -1820,7 +1830,8 @@ footer p {
 }
 
 /* Pause on hover */
-.deals-ticker-container:hover .ticker-moving-track {
+.deals-ticker-container:hover .ticker-moving-track,
+.deals-ticker-container:active .ticker-moving-track {
     animation-play-state: paused;
 }
 
@@ -1854,8 +1865,42 @@ footer p {
     50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* Responsive Design with Luxury Touch */
-@media (max-width: 1024px) {
+/* ===== COMPREHENSIVE RESPONSIVE BREAKPOINTS ===== */
+
+/* Extra Large Devices (Desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .deals-ticker-container {
+        height: 75px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .ticker-header-small {
+        width: 110px;
+    }
+    
+    .ticker-label-small {
+        font-size: 1.1rem;
+    }
+    
+    .ticker-moving-item {
+        padding: 10px 25px 10px 20px;
+    }
+}
+
+/* Large Devices (Desktops, 992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .deals-ticker-container {
+        height: 70px;
+    }
+    
+    .ticker-header-small {
+        width: 100px;
+    }
+}
+
+/* Medium Devices (Tablets Landscape, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
     .deals-ticker-container {
         height: 65px;
     }
@@ -1867,63 +1912,130 @@ footer p {
     .ticker-label-small {
         font-size: 0.9rem;
     }
-}
-
-@media (max-width: 768px) {
-    .deals-ticker-container {
-        height: 60px;
-    }
-    
-    .ticker-header-small {
-        width: 80px;
-    }
-    
-    .ticker-label-small {
-        font-size: 0.85rem;
-        gap: 5px;
-    }
     
     .ticker-content-wrapper {
-        margin-left: 80px;
-        padding-right: 100px;
+        margin-left: 90px;
+        padding-right: 110px;
+        width: calc(100% - 200px);
     }
     
     .ticker-moving-item {
-        padding: 6px 18px 6px 15px;
-        gap: 8px;
+        gap: 10px;
+        padding: 7px 18px 7px 15px;
     }
     
-    .ticker-deal-desc {
-        display: none; /* Hide description on mobile for cleaner look */
+    .ticker-deal-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
     }
     
     .ticker-deal-title {
         font-size: 0.85rem;
     }
     
+    .ticker-deal-desc {
+        font-size: 0.8rem;
+    }
+}
+
+/* Small Devices (Tablets Portrait, 576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .deals-ticker-container {
+        height: 60px;
+        border-radius: 45px;
+    }
+    
+    .ticker-header-small {
+        width: 85px;
+        border-radius: 45px 0 0 45px;
+    }
+    
+    .ticker-label-small {
+        font-size: 0.85rem;
+        gap: 6px;
+    }
+    
+    .ticker-content-wrapper {
+        margin-left: 85px;
+        padding-right: 105px;
+        width: calc(100% - 190px);
+    }
+    
+    .ticker-moving-track {
+        gap: 25px;
+        animation-duration: 25s; /* Faster on mobile for smoothness */
+    }
+    
+    .ticker-moving-item {
+        gap: 8px;
+        padding: 6px 16px 6px 12px;
+    }
+    
+    .ticker-deal-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.95rem;
+    }
+    
+    .ticker-deal-title {
+        font-size: 0.8rem;
+    }
+    
     .ticker-deal-title::after {
-        display: none;
+        display: none; /* Remove dot on smaller screens */
+    }
+    
+    .ticker-deal-desc {
+        font-size: 0.75rem;
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .ticker-deal-code {
         font-size: 0.7rem;
         padding: 3px 10px;
     }
+    
+    .ticker-mini-controls {
+        right: 12px;
+        padding: 5px;
+        gap: 8px;
+    }
+    
+    .ticker-mini-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .deals-ticker-container::after {
+        right: 85px;
+        font-size: 0.9rem;
+    }
 }
 
-@media (max-width: 480px) {
+/* Extra Small Devices (Large Phones, 375px to 575px) */
+@media (min-width: 375px) and (max-width: 575px) {
+    .deals-ticker-section {
+        padding: 0 12px 20px 12px;
+    }
+    
     .deals-ticker-container {
         height: 55px;
         border-radius: 40px;
     }
     
     .ticker-header-small {
-        width: 70px;
+        width: 75px;
+        border-radius: 40px 0 0 40px;
     }
     
     .ticker-label-small {
         font-size: 0.75rem;
-        gap: 4px;
+        gap: 5px;
+        letter-spacing: 1px;
     }
     
     .ticker-label-small i {
@@ -1931,50 +2043,189 @@ footer p {
     }
     
     .ticker-content-wrapper {
-        margin-left: 70px;
-        padding-right: 85px;
+        margin-left: 75px;
+        padding-right: 90px;
+        width: calc(100% - 165px);
+    }
+    
+    .ticker-content-wrapper::before {
+        width: 20px;
+    }
+    
+    .ticker-content-wrapper::after {
+        right: 90px;
+        width: 20px;
+    }
+    
+    .ticker-moving-track {
+        gap: 20px;
+        animation-duration: 22s; /* Faster for small screens */
     }
     
     .ticker-moving-item {
-        padding: 5px 15px 5px 12px;
         gap: 6px;
+        padding: 5px 14px 5px 10px;
     }
     
     .ticker-deal-icon {
-        width: 28px;
-        height: 28px;
-        font-size: 0.9rem;
+        width: 26px;
+        height: 26px;
+        font-size: 0.85rem;
         border-radius: 8px;
     }
     
     .ticker-deal-title {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        padding-right: 0;
+    }
+    
+    .ticker-deal-title::after {
+        display: none;
+    }
+    
+    .ticker-deal-desc {
+        display: none; /* Hide description on very small screens */
     }
     
     .ticker-deal-code {
         font-size: 0.65rem;
         padding: 2px 8px;
+        margin-left: 4px;
     }
     
     .ticker-mini-controls {
-        right: 10px;
+        right: 8px;
         padding: 4px;
-        gap: 6px;
+        gap: 5px;
     }
     
     .ticker-mini-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 0.75rem;
+        width: 26px;
+        height: 26px;
+        font-size: 0.7rem;
+    }
+    
+    .deals-ticker-container::after {
+        right: 75px;
+        top: -6px;
+        font-size: 0.8rem;
     }
 }
 
-/* Dark Mode Support - If needed */
+/* Super Small Devices (Small Phones, below 375px) */
+@media (max-width: 374px) {
+    .deals-ticker-section {
+        padding: 0 10px 18px 10px;
+    }
+    
+    .deals-ticker-container {
+        height: 50px;
+        border-radius: 35px;
+    }
+    
+    .ticker-header-small {
+        width: 70px;
+        border-radius: 35px 0 0 35px;
+    }
+    
+    .ticker-label-small {
+        font-size: 0.7rem;
+        gap: 4px;
+        letter-spacing: 0.5px;
+    }
+    
+    .ticker-label-small i {
+        font-size: 0.7rem;
+    }
+    
+    .ticker-content-wrapper {
+        margin-left: 70px;
+        padding-right: 80px;
+        width: calc(100% - 150px);
+    }
+    
+    .ticker-content-wrapper::before {
+        width: 15px;
+    }
+    
+    .ticker-content-wrapper::after {
+        right: 80px;
+        width: 15px;
+    }
+    
+    .ticker-moving-track {
+        gap: 15px;
+        animation-duration: 20s; /* Fastest for smallest screens */
+    }
+    
+    .ticker-moving-item {
+        gap: 5px;
+        padding: 4px 12px 4px 8px;
+        border-radius: 30px;
+    }
+    
+    .ticker-deal-icon {
+        width: 22px;
+        height: 22px;
+        font-size: 0.75rem;
+        border-radius: 6px;
+    }
+    
+    .ticker-deal-title {
+        font-size: 0.7rem;
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .ticker-deal-title::after {
+        display: none;
+    }
+    
+    .ticker-deal-desc {
+        display: none;
+    }
+    
+    .ticker-deal-code {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        margin-left: 2px;
+    }
+    
+    .ticker-mini-controls {
+        right: 6px;
+        padding: 3px;
+        gap: 4px;
+    }
+    
+    .ticker-mini-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.65rem;
+    }
+    
+    .deals-ticker-container::after {
+        right: 65px;
+        top: -5px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Fix for devices with notches/safe areas */
+@supports (padding: max(0px)) {
+    .deals-ticker-section {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+    }
+}
+
+/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
     .deals-ticker-container {
         background: linear-gradient(135deg, 
             rgba(40, 40, 40, 0.98) 0%,
             rgba(30, 30, 30, 0.98) 100%);
+        border-color: rgba(212, 175, 55, 0.15);
     }
     
     .ticker-moving-item {
@@ -1987,6 +2238,74 @@ footer p {
     
     .ticker-deal-desc {
         color: #aaa;
+    }
+    
+    .ticker-mini-controls {
+        background: rgba(50, 50, 50, 0.9);
+    }
+    
+    .ticker-mini-btn {
+        color: #f0f0f0;
+        background: rgba(212, 175, 55, 0.15);
+    }
+}
+
+/* High Refresh Rate Devices (120Hz+) */
+@media (prefers-reduced-motion: no-preference) {
+    .ticker-moving-track {
+        animation: luxuryMove 10s linear infinite;
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    .ticker-moving-track {
+        animation: none !important;
+    }
+    
+    .ticker-header-small::before,
+    .ticker-label-small i,
+    .ticker-deal-icon::after,
+    .deals-ticker-container::after {
+        animation: none !important;
+    }
+}
+
+/* Touch Device Optimization */
+@media (hover: none) and (pointer: coarse) {
+    .ticker-moving-item {
+        padding: 8px 20px 8px 15px; /* Larger touch target */
+    }
+    
+    .ticker-mini-btn {
+        width: 36px;
+        height: 36px; /* Larger touch target */
+    }
+    
+    .ticker-moving-item:hover {
+        transform: none; /* Disable hover effects on touch devices */
+    }
+}
+
+/* Landscape Mode Optimization */
+@media (orientation: landscape) and (max-height: 500px) {
+    .deals-ticker-section {
+        padding-bottom: 15px;
+    }
+    
+    .deals-ticker-container {
+        height: 50px;
+    }
+    
+    .ticker-moving-item {
+        padding: 5px 15px 5px 12px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .deals-ticker-section {
+        display: none;
     }
 }
 
@@ -2006,7 +2325,6 @@ footer p {
     animation: slideInGlow 0.5s ease-out;
     box-shadow: 0 0 0 2px var(--primary-gold);
 }
-
 
     </style>
 </head>
@@ -3034,6 +3352,5 @@ function getCategoryDisplayName(category) {
     </script>
 </body>
 </html>
-
 
 
