@@ -1383,7 +1383,7 @@ footer p {
         border: 1px solid #ddd;
     }
 }
-/* ===== LUXURY MOVING HOTEL DEALS TICKER - FULLY RESPONSIVE ===== */
+/* ===== LUXURY MOVING HOTEL DEALS TICKER ===== */
 .deals-ticker-section {
     padding: 0 15px 25px 15px;
     width: 100%;
@@ -1427,7 +1427,7 @@ footer p {
     overflow: hidden;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: all 0.05s ease;
+    transition: all 0.3s ease;
 }
 
 .deals-ticker-container:hover {
@@ -1519,7 +1519,7 @@ footer p {
     overflow: hidden;
     position: relative;
     padding-right: 120px;
-    width: calc(100% - 220px); /* Ensure proper width calculation */
+    width: calc(100% - 220px);
 }
 
 .ticker-content-wrapper::before {
@@ -1556,12 +1556,12 @@ footer p {
     align-items: center;
     gap: 35px;
     height: 100%;
-    animation: luxuryMove 10s linear infinite;
+    animation: luxuryMove 30s linear infinite; /* Desktop speed - adjust this */
     will-change: transform;
     white-space: nowrap;
     padding-right: 35px;
-    width: max-content; /* Critical for mobile - prevents wrapping */
-    -webkit-transform: translateZ(0); /* Hardware acceleration */
+    width: max-content;
+    -webkit-transform: translateZ(0);
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -1589,7 +1589,7 @@ footer p {
     box-shadow: 
         0 6px 20px rgba(0, 0, 0, 0.03),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease; /* Hover transition speed */
     cursor: pointer;
     flex-shrink: 0;
     backdrop-filter: blur(5px);
@@ -1786,7 +1786,7 @@ footer p {
     align-items: center;
     justify-content: center;
     font-size: 0.85rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Button transition speed */
     position: relative;
     overflow: hidden;
 }
@@ -1801,7 +1801,7 @@ footer p {
     background: linear-gradient(135deg, var(--primary-gold), #FFD700);
     border-radius: 50%;
     transform: scale(0);
-    transition: transform 0.10s ease;
+    transition: transform 0.3s ease;
     z-index: 1;
 }
 
@@ -1817,7 +1817,7 @@ footer p {
 .ticker-mini-btn i {
     position: relative;
     z-index: 2;
-    transition: color 0.10s ease;
+    transition: color 0.3s ease;
 }
 
 .ticker-mini-btn:hover i {
@@ -1837,15 +1837,15 @@ footer p {
 
 /* Speed variations - Smooth transitions */
 .ticker-moving-track.slow {
-    animation-duration: 50s;
+    animation-duration: 60s; /* Desktop slow speed */
 }
 
 .ticker-moving-track.medium {
-    animation-duration: 35s;
+    animation-duration: 30s; /* Desktop medium speed */
 }
 
 .ticker-moving-track.fast {
-    animation-duration: 20s;
+    animation-duration: 15s; /* Desktop fast speed */
 }
 
 /* Decorative Elements */
@@ -1865,159 +1865,8 @@ footer p {
     50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* ===== COMPREHENSIVE RESPONSIVE BREAKPOINTS ===== */
-
-/* Extra Large Devices (Desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .deals-ticker-container {
-        height: 75px;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-    
-    .ticker-header-small {
-        width: 110px;
-    }
-    
-    .ticker-label-small {
-        font-size: 1.1rem;
-    }
-    
-    .ticker-moving-item {
-        padding: 10px 25px 10px 20px;
-    }
-}
-
-/* Large Devices (Desktops, 992px to 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .deals-ticker-container {
-        height: 70px;
-    }
-    
-    .ticker-header-small {
-        width: 100px;
-    }
-}
-
-/* Medium Devices (Tablets Landscape, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-    .deals-ticker-container {
-        height: 65px;
-    }
-    
-    .ticker-header-small {
-        width: 90px;
-    }
-    
-    .ticker-label-small {
-        font-size: 0.9rem;
-    }
-    
-    .ticker-content-wrapper {
-        margin-left: 90px;
-        padding-right: 110px;
-        width: calc(100% - 200px);
-    }
-    
-    .ticker-moving-item {
-        gap: 10px;
-        padding: 7px 18px 7px 15px;
-    }
-    
-    .ticker-deal-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
-    
-    .ticker-deal-title {
-        font-size: 0.85rem;
-    }
-    
-    .ticker-deal-desc {
-        font-size: 0.8rem;
-    }
-}
-
-/* Small Devices (Tablets Portrait, 576px to 767px) */
-@media (min-width: 576px) and (max-width: 767px) {
-    .deals-ticker-container {
-        height: 60px;
-        border-radius: 45px;
-    }
-    
-    .ticker-header-small {
-        width: 85px;
-        border-radius: 45px 0 0 45px;
-    }
-    
-    .ticker-label-small {
-        font-size: 0.85rem;
-        gap: 6px;
-    }
-    
-    .ticker-content-wrapper {
-        margin-left: 85px;
-        padding-right: 105px;
-        width: calc(100% - 190px);
-    }
-    
-    .ticker-moving-track {
-        gap: 25px;
-        animation-duration: 25s; /* Faster on mobile for smoothness */
-    }
-    
-    .ticker-moving-item {
-        gap: 8px;
-        padding: 6px 16px 6px 12px;
-    }
-    
-    .ticker-deal-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 0.95rem;
-    }
-    
-    .ticker-deal-title {
-        font-size: 0.8rem;
-    }
-    
-    .ticker-deal-title::after {
-        display: none; /* Remove dot on smaller screens */
-    }
-    
-    .ticker-deal-desc {
-        font-size: 0.75rem;
-        max-width: 120px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .ticker-deal-code {
-        font-size: 0.7rem;
-        padding: 3px 10px;
-    }
-    
-    .ticker-mini-controls {
-        right: 12px;
-        padding: 5px;
-        gap: 8px;
-    }
-    
-    .ticker-mini-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 0.8rem;
-    }
-    
-    .deals-ticker-container::after {
-        right: 85px;
-        font-size: 0.9rem;
-    }
-}
-
-/* Extra Small Devices (Large Phones, 375px to 575px) */
-@media (min-width: 375px) and (max-width: 575px) {
+/* ===== MOBILE RESPONSIVE (below 768px) ===== */
+@media (max-width: 768px) {
     .deals-ticker-section {
         padding: 0 12px 20px 12px;
     }
@@ -2044,8 +1893,8 @@ footer p {
     
     .ticker-content-wrapper {
         margin-left: 75px;
-        padding-right: 90px;
-        width: calc(100% - 165px);
+        padding-right: 95px;
+        width: calc(100% - 170px);
     }
     
     .ticker-content-wrapper::before {
@@ -2053,169 +1902,154 @@ footer p {
     }
     
     .ticker-content-wrapper::after {
-        right: 90px;
+        right: 95px;
         width: 20px;
     }
     
     .ticker-moving-track {
         gap: 20px;
-        animation-duration: 22s; /* Faster for small screens */
+        animation-duration: 35s; /* Mobile base speed - adjust this */
     }
     
     .ticker-moving-item {
-        gap: 6px;
-        padding: 5px 14px 5px 10px;
+        gap: 8px;
+        padding: 6px 16px 6px 12px;
     }
     
     .ticker-deal-icon {
-        width: 26px;
-        height: 26px;
-        font-size: 0.85rem;
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
         border-radius: 8px;
     }
     
     .ticker-deal-title {
-        font-size: 0.75rem;
-        padding-right: 0;
+        font-size: 0.8rem;
     }
     
     .ticker-deal-title::after {
-        display: none;
+        display: none; /* Remove dot on mobile */
     }
     
     .ticker-deal-desc {
-        display: none; /* Hide description on very small screens */
+        display: none; /* Hide description on mobile */
     }
     
     .ticker-deal-code {
-        font-size: 0.65rem;
-        padding: 2px 8px;
+        font-size: 0.7rem;
+        padding: 3px 10px;
         margin-left: 4px;
     }
     
     .ticker-mini-controls {
-        right: 8px;
+        right: 10px;
         padding: 4px;
-        gap: 5px;
+        gap: 6px;
     }
     
     .ticker-mini-btn {
-        width: 26px;
-        height: 26px;
-        font-size: 0.7rem;
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
     }
     
     .deals-ticker-container::after {
-        right: 75px;
+        right: 80px;
         top: -6px;
         font-size: 0.8rem;
     }
-}
 
-/* Super Small Devices (Small Phones, below 375px) */
-@media (max-width: 374px) {
-    .deals-ticker-section {
-        padding: 0 10px 18px 10px;
+    /* Mobile speed variations */
+    .ticker-moving-track.slow {
+        animation-duration: 25s; /* Mobile slow speed */
     }
     
+    .ticker-moving-track.medium {
+        animation-duration: 45s; /* Mobile medium speed */
+    }
+    
+    .ticker-moving-track.fast {
+        animation-duration: 30s; /* Mobile fast speed */
+    }
+}
+
+/* Small phones (below 480px) */
+@media (max-width: 480px) {
     .deals-ticker-container {
         height: 50px;
-        border-radius: 35px;
     }
     
     .ticker-header-small {
         width: 70px;
-        border-radius: 35px 0 0 35px;
     }
     
     .ticker-label-small {
         font-size: 0.7rem;
         gap: 4px;
-        letter-spacing: 0.5px;
-    }
-    
-    .ticker-label-small i {
-        font-size: 0.7rem;
     }
     
     .ticker-content-wrapper {
         margin-left: 70px;
-        padding-right: 80px;
-        width: calc(100% - 150px);
-    }
-    
-    .ticker-content-wrapper::before {
-        width: 15px;
-    }
-    
-    .ticker-content-wrapper::after {
-        right: 80px;
-        width: 15px;
+        padding-right: 85px;
+        width: calc(100% - 155px);
     }
     
     .ticker-moving-track {
         gap: 15px;
-        animation-duration: 20s; /* Fastest for smallest screens */
+        animation-duration: 15s; /* Small phone speed */
     }
     
     .ticker-moving-item {
-        gap: 5px;
-        padding: 4px 12px 4px 8px;
-        border-radius: 30px;
+        padding: 5px 14px 5px 10px;
     }
     
     .ticker-deal-icon {
-        width: 22px;
-        height: 22px;
-        font-size: 0.75rem;
-        border-radius: 6px;
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
     }
     
     .ticker-deal-title {
-        font-size: 0.7rem;
-        max-width: 80px;
+        font-size: 0.75rem;
+        max-width: 100px;
         overflow: hidden;
         text-overflow: ellipsis;
     }
     
-    .ticker-deal-title::after {
-        display: none;
-    }
-    
-    .ticker-deal-desc {
-        display: none;
-    }
-    
     .ticker-deal-code {
-        font-size: 0.6rem;
-        padding: 2px 6px;
-        margin-left: 2px;
+        font-size: 0.65rem;
+        padding: 2px 8px;
     }
     
     .ticker-mini-controls {
-        right: 6px;
+        right: 8px;
         padding: 3px;
         gap: 4px;
     }
     
     .ticker-mini-btn {
-        width: 24px;
-        height: 24px;
-        font-size: 0.65rem;
+        width: 26px;
+        height: 26px;
+        font-size: 0.7rem;
     }
     
     .deals-ticker-container::after {
-        right: 65px;
-        top: -5px;
+        right: 70px;
         font-size: 0.7rem;
     }
 }
 
-/* Fix for devices with notches/safe areas */
-@supports (padding: max(0px)) {
-    .deals-ticker-section {
-        padding-left: max(15px, env(safe-area-inset-left));
-        padding-right: max(15px, env(safe-area-inset-right));
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    .ticker-moving-track {
+        animation-duration: 30s !important; /* Slower for accessibility */
+    }
+    
+    .ticker-header-small::before,
+    .ticker-label-small i,
+    .ticker-deal-icon::after,
+    .deals-ticker-container::after {
+        animation: none !important;
     }
 }
 
@@ -2250,62 +2084,19 @@ footer p {
     }
 }
 
-/* High Refresh Rate Devices (120Hz+) */
-@media (prefers-reduced-motion: no-preference) {
-    .ticker-moving-track {
-        animation: luxuryMove 10s linear infinite;
-    }
-}
-
-/* Reduced Motion Preference */
-@media (prefers-reduced-motion: reduce) {
-    .ticker-moving-track {
-        animation: none !important;
-    }
-    
-    .ticker-header-small::before,
-    .ticker-label-small i,
-    .ticker-deal-icon::after,
-    .deals-ticker-container::after {
-        animation: none !important;
-    }
-}
-
 /* Touch Device Optimization */
 @media (hover: none) and (pointer: coarse) {
     .ticker-moving-item {
-        padding: 8px 20px 8px 15px; /* Larger touch target */
+        padding: 8px 18px 8px 14px; /* Larger touch target */
     }
     
     .ticker-mini-btn {
-        width: 36px;
-        height: 36px; /* Larger touch target */
+        width: 32px;
+        height: 32px; /* Larger touch target on mobile */
     }
     
     .ticker-moving-item:hover {
         transform: none; /* Disable hover effects on touch devices */
-    }
-}
-
-/* Landscape Mode Optimization */
-@media (orientation: landscape) and (max-height: 500px) {
-    .deals-ticker-section {
-        padding-bottom: 15px;
-    }
-    
-    .deals-ticker-container {
-        height: 50px;
-    }
-    
-    .ticker-moving-item {
-        padding: 5px 15px 5px 12px;
-    }
-}
-
-/* Print Styles */
-@media print {
-    .deals-ticker-section {
-        display: none;
     }
 }
 
@@ -2617,8 +2408,8 @@ footer p {
                 price: 16.99,
                 description: "Crispy risotto balls infused with black truffle and filled with molten fontina cheese.",
                 images: [
-                    "https://images.unsplash.com/photo-1626700051175-6818013e0571?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-                    "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                    "https://thecookingco.com/wp-content/uploads/2023/01/SA901570-scaled-800x480.jpg",
+                    "https://thecookingco.com/wp-content/uploads/2023/01/A7400133-scaled-800x480.jpg"
                 ],
                 dietary: ["veg"],
                 ingredients: ["Arborio rice", "Black truffle", "Fontina cheese", "Parmesan", "Breadcrumbs", "Fresh herbs"],
@@ -2737,7 +2528,7 @@ footer p {
                 price: 9.99,
                 description: "Locally brewed craft beer with notes of citrus and hops.",
                 images: [
-                    "https://images.unsplash.com/photo-1629731680315-603a81d63e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                    "https://thumbs.dreamstime.com/b/bottles-famous-global-beer-brands-poznan-pol-mar-including-heineken-becks-bud-miller-corona-stella-artois-san-miguel-143170440.jpg"
                 ],
                 dietary: ["veg"],
                 ingredients: ["Malted barley", "Hops", "Yeast", "Water", "Citrus peel"],
